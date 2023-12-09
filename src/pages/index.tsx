@@ -1,5 +1,8 @@
-import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import * as React from "react";
+import type { HeadFC, PageProps } from "gatsby";
+import { Seo } from "../components/seo";
+import { SideMenu } from "../components/sideMenu";
+import { MainPage } from "../components/mainPage";
 
 const pageStyles = {
   color: "#232129",
@@ -9,12 +12,13 @@ const pageStyles = {
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <main style={pageStyles}>
-      <div>My new page</div>
-    </main>
+    <div className="flex h-screen">
+      <SideMenu></SideMenu>
+      <MainPage></MainPage>
+    </div>
   )
 }
 
-export default IndexPage
+export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <Seo title="Home"></Seo>
