@@ -18,7 +18,24 @@ const config: GatsbyConfig = {
       options: {
         icon: 'src/images/frenchie01.jpeg',
       },
-    }
+    },
+    {
+      resolve: `gatsby-omni-font-loader`,
+      options: {
+        enableListener: true,
+        preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
+        web: [
+          {
+            name: `JetBrains Mono`,
+            file: `https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap`,
+          },
+          {
+            name: `Rubik Mono One`,
+            file: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`,
+          }
+        ],
+      },
+    },
   ],
 };
 
