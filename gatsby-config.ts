@@ -29,10 +29,6 @@ const config: GatsbyConfig = {
             name: `JetBrains Mono`,
             file: `https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap`,
           },
-          {
-            name: `Rubik Mono One`,
-            file: `https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap`,
-          }
         ],
       },
     },
