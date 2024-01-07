@@ -1,5 +1,5 @@
 import React from "react";
-import { StaticImage } from "gatsby-plugin-image"
+import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
@@ -8,8 +8,8 @@ import { Tooltip } from "react-tooltip";
 
 export const SideMenu = () => {
     return (
-        <div className="basis-1/4 flex flex-col text-slate-500 text-slate-400 bg-slate-900
-        bg-gradient-to-tr from-slate-900 to-slate-400">
+        <div className="basis-1/4 flex flex-col text-slate-300 text-slate-400 bg-slate-900
+        bg-gradient-to-tr from-slate-900 to-slate-600">
             <div className="h-1/2 flex flex-col justify-center items-center m-3 mt-5">
                 <div className="border-2 rounded-full border-black border-solid relative">
                     <StaticImage className="rounded-full" src="../images/frenchie01.jpeg" alt="profile img" width={200} height={200}></StaticImage>

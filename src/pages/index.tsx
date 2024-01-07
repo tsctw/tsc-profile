@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import { Seo } from "../components/seo";
 import CodeEditor from '@uiw/react-textarea-code-editor';
