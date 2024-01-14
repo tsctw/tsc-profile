@@ -1,8 +1,8 @@
-import React from "react";
-import type { HeadFC, PageProps } from "gatsby";
-import { Seo } from "../components/seo";
+import React from 'react';
+import type { HeadFC, PageProps } from 'gatsby';
+import { Seo } from '../components/seo';
 import CodeEditor from '@uiw/react-textarea-code-editor';
-import { useAutoUpdateState } from "../utils/useAutoUpdateState";
+import { useAutoUpdateState } from '../utils/useAutoUpdateState';
 
 const IndexPage: React.FC<PageProps> = () => {
   const fullText = 'const greeting = (name: string) => {\n  return `Hey ${name}, here is a Front-end developer\'s profile`;\n}\n\ngreeting(\'Guest\');';
@@ -19,21 +19,21 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
         <div className="rounded-b-lg">
           <CodeEditor
-          value={code}
-          language="ts"
-          placeholder="Please enter TS code."
-          onChange={(evn) => setCode(evn.target.value)}
-          padding={15}
-          data-color-mode="dark"
-          style={{ fontSize: 20, fontFamily: "'JetBrains Mono'"}}
-          className="rounded-b-lg"
+            value={code}
+            language="ts"
+            placeholder="Please enter TS code."
+            onChange={(evn) => setCode(evn.target.value)}
+            padding={15}
+            data-color-mode="dark"
+            style={{ fontSize: 20, fontFamily: '\'JetBrains Mono\''}}
+            className="rounded-b-lg"
           />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <Seo title="Home"></Seo>
+export const Head: HeadFC = () => <Seo title="Home"></Seo>;
