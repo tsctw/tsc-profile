@@ -3,10 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'gatsby';
 
-export const RoundButton = ({icon, to}: {icon: IconDefinition, to: string}) => {
+type RoundButtonProps = {icon: IconDefinition, to: string, onClick?: () => void};
+
+export const RoundButton = ({icon, to, onClick}: RoundButtonProps) => {
   return (
-    <button className="button">
-      <div className="button-circle">
+    <button className="round-button" onClick={onClick}>
+      <div className="round-button-circle">
         <Link to={to} target="_blank">
           <FontAwesomeIcon icon={icon} />
         </Link>
