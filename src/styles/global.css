@@ -1,3 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes morph {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        box-shadow: inset 0px 0px 0px 9px rgba(0,0,0,.1);
+    }
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        box-shadow: inset 0px 0px 0px 9px rgba(0,0,0,.1);
+    }
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        box-shadow: inset 0px 0px 0px 9px rgba(0,0,0,.1);
+    }
+}
+
+.ani-image {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    background-image: url('../images/profile03.png');
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+    animation: morph 8s ease-in-out infinite;
+    box-shadow: inset 0px 0px 0px 9px rgba(0,0,0,.1);
+}
+
+.profile-image {
+  margin-top: 100px;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover .button-circle {
+  background-color: #6b7280;
+}
+
+.button:active {
+  opacity: 0.5;
+}
+
+.button-circle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 0.4s ease-in-out;
+}
