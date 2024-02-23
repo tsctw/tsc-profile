@@ -52,7 +52,7 @@ export const Profile = () => {
         </Tooltip>
       </div>
       <div className="flex flex-col justify-center items-center mt-10">
-        <Button>Download CV</Button>
+        <Button><>Download CV</></Button>
       </div>
     </div>
   );
