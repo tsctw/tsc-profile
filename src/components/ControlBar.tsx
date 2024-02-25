@@ -10,14 +10,12 @@ export const ControlBar = () => {
       <Link to="/" className="home"><FontAwesomeIcon icon={faHouse} /></Link>
       <Link to="/about" className="about"><FontAwesomeIcon icon={faUser} /></Link>
       <Link to="/resume" className="resume"><FontAwesomeIcon icon={faFileLines} /></Link>
-      <Link to="/portfilio" className="portfilio"><FontAwesomeIcon icon={faFolderOpen} /></Link>
-      {/* <Link to="" className="blog"><FontAwesomeIcon icon={faBlog} /></Link> */}
+      <Link to="/portfolio" className="portfilio"><FontAwesomeIcon icon={faFolderOpen} /></Link>
 
       <Tooltip anchorSelect=".home" place='left' >Home</Tooltip>
       <Tooltip anchorSelect=".about" place='left' >About Me</Tooltip>
       <Tooltip anchorSelect=".resume" place='left' >Resume</Tooltip>
       <Tooltip anchorSelect=".portfilio" place='left' >Portfilio</Tooltip>
-      {/* <Tooltip anchorSelect=".blog" place='left' >Blog</Tooltip> */}
     </div>
   );
 };
