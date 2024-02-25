@@ -10,8 +10,8 @@ export const MainView: React.FC<PageProps> = (props: PageProps) => {
       <div className="basis-1/4 text-white bg-zinc-700 rounded-lg">
         <Profile />
       </div>
-      <div className="basis-3/4">
-        <DisplayView {...props}/>
+      <div className="basis-3/4 overflow-scroll">
+        <DisplayView {...props} />
       </div>
     </div>
   );

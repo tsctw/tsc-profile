@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { Tooltip } from 'react-tooltip';
-import { RoundButton } from './roundButton';
+import { RoundButton } from './RoundButton';
+import { Button, Varient } from './Button';
 
 const copyFunc = () => {
   const textToCopy = 'taosen.chang@gmail.com';
@@ -20,24 +21,40 @@ const copyFunc = () => {
 };
 
 export const Profile = () => {
+  const [copyIsClicked, setCopyIsClicked] = useState(false);
+
+  const onClickEmailCopy = () => {
+    setCopyIsClicked(true);
+    setTimeout(() => {
+      setCopyIsClicked(false);
+    }, 1000);
+    copyFunc();
+  };
+
   return (
     <div className="flex flex-col">
       <div className="flex flex-col justify-center items-center m-3 mt-5 profile-image">
         <div className="border-2 rounded-full border-black border-solid relative">
           <StaticImage className="rounded-full" src="../images/frenchie01.jpeg" alt="profile img" width={150} height={150}></StaticImage>
         </div>
-        <div className="mt-5 font-bold text-xl">Tao-Sen Chang</div>
+        <div className="mt-5 font-bold text-2xl">Tao-Sen Chang</div>
+        <div className="mt-2 text-md text-stone-400">Web Developer</div>
       </div>
       <div className="flex justify-center gap-4 text-xl">
         <RoundButton icon={faLinkedin} to="https://www.linkedin.com/in/tao-sen-chang/" />
         <RoundButton icon={faGithub} to="https://github.com/tsctw" />
-        <a id="email" onClick={copyFunc}>
-          <RoundButton icon={faEnvelope} to="" />
+        <a id="email">
+          <RoundButton icon={faEnvelope} to="" onClick={onClickEmailCopy} />
         </a>
-        <Tooltip anchorSelect="#email" clickable>
-          <button>taosen.chang@gmail.com</button>
-          {/* <button >Copy</button> */}
+        <Tooltip anchorSelect="#email" className="email-tooltip">
+          <div>taosen.chang@gmail.com</div>
+          <div className="text-sm">{copyIsClicked ? 'Copied!' : 'Click icon to copy'}</div>
         </Tooltip>
+      </div>
+      <div className="flex flex-col justify-center items-center mt-10">
+        <Button varient={Varient.PRIMARY} size="medium">
+          <a href='/Resume_SoftwareEngineer_TaoSenChang.pdf' download>Download Resume</a>
+        </Button>
       </div>
     </div>
   );

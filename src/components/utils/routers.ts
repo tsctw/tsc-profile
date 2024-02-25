@@ -2,7 +2,7 @@ export enum Pages {
   HOME = '/',
   ABOUT = '/about/',
   RESUME = '/resume/',
-  PORTFILIO = '/portfilio/'
+  PORTFILIO = '/portfolio/'
 }
 
 type Routers = {
