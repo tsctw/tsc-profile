@@ -1,21 +1,78 @@
 import React from 'react';
 import type { HeadFC } from 'gatsby';
 import { Seo } from '../components/seo';
+import { faReact } from '@fortawesome/free-brands-svg-icons';
+import { faCode, faServer, faBugSlash, faPalette, faArrowsSpin } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const aboutTitle = 'text-3xl font-bold';
+
+const highlightColor = 'text-orange-500';
+
+const renderList = () => {
+  const lists = [
+    {
+      text: 'Developed web application in Front-end, Back-end and CI/CD.',
+      icon: faCode
+    },
+    {
+      text: 'Specialized in React and TypeScript, with additional proficiency in Vue.js and Angular.',
+      icon: faReact
+    },
+    {
+      text: 'Equipped with Back-end know-how, enabling data-driven decision-making.',
+      icon: faServer
+    },
+    {
+      text: 'Implemented error handling and wrote testable and scalable code.',
+      icon: faBugSlash
+    },
+    {
+      text: 'Delivered high-quality solutions for UI and UX design.',
+      icon: faPalette
+    },
+    {
+      text: 'Proficient in software development methodologies, including Scrum and Agile ways of work.',
+      icon: faArrowsSpin
+    }
+  ];
+  return lists.map((list, key) => <div key={key} className="flex pt-3">
+    <div className={`text-2xl pe-2 ${highlightColor}`}><FontAwesomeIcon icon={list.icon} /></div>
+    <div>{list.text}</div>
+  </div>);
+};
 
 const About = () => {
   return (
-    <div className="leading-8 p-5">
+    <div className="flex flex-col p-5 text-white h-full">
       <div className="flex justify-center mb-5">
-        <div className="ani-image">  
+        <div className="ani-image">
+          {/* <div>abc</div> */}
         </div>
       </div>
-      <div className="flex justify-center mb-5 text-left">
-        <div className="w-2/3">
-          <p className="pb-5">My name is Tao-Sen Chang. A software engineer with solid experience specializing in web application development, DevOps, cloud solutions and database. About 3 years experiences of developing platforms to enhence data-driven decision making. Adept at identifying innovative solutions in collaboration with diverse teams and project stakeholders.</p>
-          <p>Fascinated with travel and sharing knowledge. Live well, love lots, and laugh often. </p>
+      <div className="flex justify-center text-left">
+        {/* section left */}
+        <div className="w-1/2 m-5">
+          <h3 className={aboutTitle}>About
+            <span className={`${aboutTitle} ${highlightColor} pl-3`}>Me</span>
+          </h3>
+          <div className="mt-3">
+            <p className="pb-5">My name is Tao-Sen Chang. A software engineer with solid experience specializing in web application development, DevOps, cloud solutions and database. More than 2 years experiences of developing platforms to enhence data-driven decision making. Adept at identifying innovative solutions in collaboration with diverse teams and project stakeholders.</p>
+            <p>Fascinated with travel and sharing knowledge. Live well, love lots, and laugh often. </p>
+          </div>
         </div>
+        {/* section right */}
+        <div className="w-1/2 m-5">
+          <h3 className={aboutTitle}>What
+            <span className={`${aboutTitle} ${highlightColor} pl-3`}>I Do</span>
+          </h3>
+          <div className="mt-3">
+            {renderList()}
+          </div>
+        </div>
+
       </div>
-    </div>
+    </div >
   );
 };
 

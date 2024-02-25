@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .body {
-  font-family: 'Nunito';
+  font-family: 'Poppins';
 }
 
 @keyframes morph {
@@ -24,8 +24,8 @@
 }
 
 .ani-image {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   overflow: hidden;
   background-image: url('../images/profile03.png');
   background-size: cover;
