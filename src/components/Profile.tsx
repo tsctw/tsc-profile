@@ -44,15 +44,17 @@ export const Profile = () => {
         <RoundButton icon={faLinkedin} to="https://www.linkedin.com/in/tao-sen-chang/" />
         <RoundButton icon={faGithub} to="https://github.com/tsctw" />
         <a id="email">
-          <RoundButton icon={faEnvelope} to="" onClick={onClickEmailCopy}/>
+          <RoundButton icon={faEnvelope} to="" onClick={onClickEmailCopy} />
         </a>
         <Tooltip anchorSelect="#email" className="email-tooltip">
           <div>taosen.chang@gmail.com</div>
-          <div className="text-sm">{copyIsClicked ? 'Copied!': 'Click icon to copy'}</div>
+          <div className="text-sm">{copyIsClicked ? 'Copied!' : 'Click icon to copy'}</div>
         </Tooltip>
       </div>
       <div className="flex flex-col justify-center items-center mt-10">
-        <Button><>Download CV</></Button>
+        <Button>
+          <a href='/Resume_SoftwareEngineer_TaoSenChang.pdf' download>Download Resume</a>
+        </Button>
       </div>
     </div>
   );
