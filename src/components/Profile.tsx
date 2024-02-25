@@ -4,7 +4,7 @@ import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { Tooltip } from 'react-tooltip';
 import { RoundButton } from './RoundButton';
-import { Button } from './Button';
+import { Button, Varient } from './Button';
 
 const copyFunc = () => {
   const textToCopy = 'taosen.chang@gmail.com';
@@ -52,7 +52,7 @@ export const Profile = () => {
         </Tooltip>
       </div>
       <div className="flex flex-col justify-center items-center mt-10">
-        <Button>
+        <Button varient={Varient.PRIMARY} size="medium">
           <a href='/Resume_SoftwareEngineer_TaoSenChang.pdf' download>Download Resume</a>
         </Button>
       </div>

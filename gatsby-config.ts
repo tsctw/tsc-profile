@@ -27,8 +27,12 @@ const config: GatsbyConfig = {
         web: [
           {
             name: 'JetBrains Mono',
-            file: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap',
+            file: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap',
           },
+          {
+            name: 'Nunito',
+            file: 'https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap'
+          }
         ],
       },
     },

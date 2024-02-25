@@ -5,11 +5,13 @@ import { useAutoUpdateState } from '../utils/useAutoUpdateState';
 import * as ts from 'typescript'; // 引入 TypeScript 編譯器
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/monokai.css';
+import 'codemirror/theme/solarized.css';
 import 'codemirror/keymap/sublime';
 import 'codemirror/addon/display/autorefresh';
 import 'codemirror/addon/comment/comment';
 import 'codemirror/addon/edit/matchbrackets';
 import 'codemirror/mode/javascript/javascript';
+import { Button, Varient } from '../components/Button';
 
 
 class TSError extends Error {
@@ -28,7 +30,7 @@ const options: ts.CompilerOptions = {
 
 const IndexPage: React.FC<PageProps> = () => {
   const fullText = 'const greeting = (name: string) => {\n  return `Hey ${name}, here is a Web Developer\'s profile`;\n}\n\nconsole.log(greeting(\'Guest\'));';
-  const updateInterval = 50;
+  const updateInterval = 10;
   const [code, setCode] = useAutoUpdateState('', fullText, updateInterval);
   const [output, setOutput] = useState<string | null>(null);
   const [showRunButton, setShowRunButton] = useState(false);
@@ -60,42 +62,60 @@ const IndexPage: React.FC<PageProps> = () => {
       const runnableCode = new Function(modifiedCode);
       // 在該函數實例上調用，並更新輸出
       const result = runnableCode();
-      setOutput(`> ${result}`);
+      console.log(result);
+      setOutput(result);
     } catch (error) {
       if (error instanceof TSError) setOutput('> Error: ' + error.message);
     }
   };
+
+  const renderLine = () => {
+    if (!output) return;
+    const outputLines = output.split(/\r?\n/);
+    return <>
+      {outputLines.map((line, index) => (
+        <div key={index}>{line}</div>
+      ))}
+    </>;
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <div className="w-full -translate-y-16">
+      <div className="w-full -translate-y-16 m-b-0">
         <div className="bg-slate-200 h-7 flex items-center gap-2 pl-2 rounded-t-lg">
           <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#FF5F55' }}></div>
           <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#FFBE2D' }}></div>
           <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#24C93F' }}></div>
         </div>
-        <div className="rounded-b-lg">
+        <div>
           <CodeMirror
             value={code}
             onChange={(val) => setCode(val.getValue())}
             height="200px"
             width="600px"
             options={{
-              theme: 'monokai',
+              placeholder: 'Please enter the TypeScript code.',
+              theme: 'solarized',
               tabSize: 2,
               mode: 'tsx',
               keyMap: 'sublime',
               lineNumbers: false,
             }} />
         </div>
-        <div>
-          <button className={`text-white opacity-0 transition duration-500 ease-in-out ${showRunButton && 'opacity-100'}`}
-            onClick={() => {
-              setOutput(null);
-              setTimeout(() => handleRunCode(), 500);
-            }}>Run Code</button>
-          <div className="h-5"></div>
-          <div id="ts-result" className={`text-cyan-100 opacity-0 transition duration-500 ease-in-out ${output && 'opacity-100'}`} style={{ width: '600px', overflow: 'auto' }}>{output}</div>
-        </div>
+      </div>
+      <div className="text-center flex flex-col items-center justify-center -translate-y-2">
+        <Button varient={Varient.OUTLINE} className={`opacity-0 transition duration-500 ease-in-out ${showRunButton && 'opacity-100'}`}
+          onClick={() => {
+            setOutput(null);
+            setTimeout(() => handleRunCode(), 500);
+          }}>Run Code</Button>
+        <div className="h-5"></div>
+        <div className={` overflow-scroll text-cyan-100 opacity-0 transition duration-500 ease-in-out ${output && 'opacity-100'}`}
+          style={{
+            width: '600px',
+            height: '100px',
+            fontFamily: '\'JetBrains Mono\''
+          }}>{renderLine()}</div>
       </div>
     </div>);
 
