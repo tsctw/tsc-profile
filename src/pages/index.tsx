@@ -1,11 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import { Seo } from '../components/seo';
-// import { useAutoUpdateState } from '../utils/useAutoUpdateState';
-import * as ts from 'typescript'; // 引入 TypeScript 編譯器
-// import CodeMirror from '@uiw/react-codemirror';
+import * as ts from 'typescript';
 import { Button, Varient } from '../components/Button';
-// import { CodeMirrorComponent } from '../components/CodeMirrorComponent';
 import Loadable from '@loadable/component';
 
 class TSError extends Error {
@@ -45,13 +42,9 @@ const IndexPage: React.FC<PageProps> = () => {
       };
 
       ${transpiledCode} // 執行原始 TypeScript 代碼
-
-      // 返回 output 變量的值
       return output;
     `;
-      // 創建一個新的 Function 實例
       const runnableCode = new Function(modifiedCode);
-      // 在該函數實例上調用，並更新輸出
       const result = runnableCode();
       setOutput(result);
     } catch (error) {
