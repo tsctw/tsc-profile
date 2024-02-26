@@ -15,7 +15,10 @@ const copyFunc = () => {
 
   textarea.select();
   textarea.setSelectionRange(0, 99999); // For mobile devices
-  navigator.clipboard.writeText(textarea.value);
+
+  if (typeof window !== 'undefined') {
+    navigator.clipboard.writeText(textarea.value);
+  }
 
   document.body.removeChild(textarea);
 };
