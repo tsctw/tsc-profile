@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import { Seo } from '../components/seo';
-import { useAutoUpdateState } from '../utils/useAutoUpdateState';
+// import { useAutoUpdateState } from '../utils/useAutoUpdateState';
 import * as ts from 'typescript'; // 引入 TypeScript 編譯器
-import CodeMirror from '@uiw/react-codemirror';
-import 'codemirror/theme/monokai.css';
-import 'codemirror/theme/solarized.css';
-import 'codemirror/keymap/sublime';
-import 'codemirror/addon/display/autorefresh';
-import 'codemirror/addon/comment/comment';
-import 'codemirror/addon/edit/matchbrackets';
-import 'codemirror/mode/javascript/javascript';
+// import CodeMirror from '@uiw/react-codemirror';
 import { Button, Varient } from '../components/Button';
-
+// import { CodeMirrorComponent } from '../components/CodeMirrorComponent';
+import Loadable from '@loadable/component';
 
 class TSError extends Error {
   constructor(message: string) {
@@ -29,15 +23,12 @@ const options: ts.CompilerOptions = {
 };
 
 const IndexPage: React.FC<PageProps> = () => {
-  const fullText = 'const greeting = (name: string) => {\n  return `Hey ${name}, here is a Web Developer\'s profile`;\n}\n\nconsole.log(greeting(\'Guest\'));';
-  const updateInterval = 10;
-  const [code, setCode] = useAutoUpdateState('', fullText, updateInterval);
+  const [code, setCode] = useState('');
   const [output, setOutput] = useState<string | null>(null);
   const [showRunButton, setShowRunButton] = useState(false);
 
-  useEffect(() => {
-    if (code === fullText) setShowRunButton(true);
-  }, [code]);
+  // Prevent CodeMirrorComponent render twice when props changes
+  const CodeMirrorComponent = useMemo(() => Loadable(() => import('../components/CodeMirrorComponent')), []);
 
   const handleRunCode = () => {
     try {
@@ -49,7 +40,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
       // 重寫 console.log 函數以捕獲輸出並賦值給 output 變量
       console.log = (message) => {
-        output += message + '\\n'; // 將輸出添加到 output 變量
+        output += '> ' + message + '\\n'; // 將輸出添加到 output 變量
         originalConsoleLog(message); // 調用原始 console.log 函數
       };
 
@@ -62,7 +53,6 @@ const IndexPage: React.FC<PageProps> = () => {
       const runnableCode = new Function(modifiedCode);
       // 在該函數實例上調用，並更新輸出
       const result = runnableCode();
-      console.log(result);
       setOutput(result);
     } catch (error) {
       if (error instanceof TSError) setOutput('> Error: ' + error.message);
@@ -74,7 +64,7 @@ const IndexPage: React.FC<PageProps> = () => {
     const outputLines = output.split(/\r?\n/);
     return <>
       {outputLines.map((line, index) => (
-        <div key={index}>{line}</div>
+        <div className="text-left" key={index}>{line}</div>
       ))}
     </>;
   };
@@ -88,29 +78,17 @@ const IndexPage: React.FC<PageProps> = () => {
           <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#24C93F' }}></div>
         </div>
         <div>
-          <CodeMirror
-            value={code}
-            onChange={(val) => setCode(val.getValue())}
-            height="200px"
-            width="600px"
-            options={{
-              placeholder: 'Please enter the TypeScript code.',
-              theme: 'solarized',
-              tabSize: 2,
-              mode: 'tsx',
-              keyMap: 'sublime',
-              lineNumbers: false,
-            }} />
+          {<CodeMirrorComponent code={code} setCode={setCode} setShowRunButton={setShowRunButton} />}
         </div>
       </div>
-      <div className="text-center flex flex-col items-center justify-center -translate-y-2">
+      <div className="w-full text-center flex flex-col items-center justify-center -translate-y-2">
         <Button varient={Varient.OUTLINE} className={`opacity-0 transition duration-500 ease-in-out ${showRunButton && 'opacity-100'}`}
           onClick={() => {
             setOutput(null);
             setTimeout(() => handleRunCode(), 500);
           }}>Run Code</Button>
         <div className="h-5"></div>
-        <div className={` overflow-scroll text-cyan-100 opacity-0 transition duration-500 ease-in-out ${output && 'opacity-100'}`}
+        <div className={`overflow-scroll text-cyan-100 opacity-0 transition duration-500 ease-in-out ${output && 'opacity-100'}`}
           style={{
             width: '600px',
             height: '100px',
