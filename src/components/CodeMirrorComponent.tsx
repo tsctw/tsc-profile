@@ -12,7 +12,6 @@ import 'codemirror/mode/javascript/javascript';
 type CodeMirrorComponentProps = {
   code: string;
   setCode: (s: string) => void;
-  // showRunButton: boolean;
   setShowRunButton: (show: boolean) => void;
 }
 
