@@ -7,7 +7,7 @@ export const MainView: React.FC<PageProps> = (props: PageProps) => {
 
   return (
     <div className="flex h-full">
-      <div className=" h-full basis-1/4 text-white bg-zinc-700 rounded-lg">
+      <div className=" h-full basis-1/4 text-white bg-zinc-700 rounded-lg overflow-scroll">
         <Profile />
       </div>
       <div className="h-full basis-3/4 overflow-scroll">

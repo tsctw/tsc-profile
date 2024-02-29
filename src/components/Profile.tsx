@@ -35,7 +35,7 @@ export const Profile = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-full">
       <div className="flex flex-col justify-center items-center m-3 mt-5 profile-image">
         <div className="border-2 rounded-full border-black border-solid relative">
           <StaticImage className="rounded-full" src="../images/frenchie01.jpeg" alt="profile img" width={150} height={150}></StaticImage>
@@ -54,7 +54,7 @@ export const Profile = () => {
           <div className="text-sm">{copyIsClicked ? 'Copied!' : 'Click icon to copy'}</div>
         </Tooltip>
       </div>
-      <div className="flex flex-col justify-center items-center mt-10">
+      <div className="flex flex-col justify-center items-center mt-8 pb-4">
         <Button varient={Varient.PRIMARY} size="medium">
           <a href='/Resume_SoftwareEngineer_TaoSenChang.pdf' download>Download Resume</a>
         </Button>

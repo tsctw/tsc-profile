@@ -72,16 +72,3 @@
   border-radius: 0 0 5px 5px !important;
   box-shadow: none !important;
 }
-
-.timeline-main-wrapper {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-div[role=list] {
-  padding: 0 !important;
-}
-
-.rc-card-text {
-  margin: 0 !important;
-}
