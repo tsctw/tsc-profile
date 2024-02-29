@@ -74,11 +74,11 @@ const itemsEducation = [
 const Resume = () => {
   return (
     <div className="h-full">
-      <div className="text-2xl text-white font-bold pt-10 pl-10">Resume</div>
+      <div className="text-2xl text-black dark:text-white font-bold pt-10 pl-10">Resume</div>
       <div className="flex">
         <div className="w-1/2">
           <div>
-            <div className="text-xl text-white pt-10 pl-10">Work
+            <div className="text-xl text-black dark:text-white pt-10 pl-10">Work
               <span className={`ml-2 ${highlightColor}`}>Experience</span>
             </div>
             <TimeLine items={itemsWork} />
@@ -86,7 +86,7 @@ const Resume = () => {
         </div>
         <div className="w-1/2">
           <div>
-            <div className="text-xl text-white pt-10 pl-10">
+            <div className="text-xl text-black dark:text-white pt-10 pl-10">
               Education
             </div>
             <TimeLine items={itemsEducation} />

@@ -37,11 +37,11 @@ export const Profile = () => {
   return (
     <div className="flex flex-col h-full">
       <div className="flex flex-col justify-center items-center m-3 mt-5 profile-image">
-        <div className="border-2 rounded-full border-black border-solid relative">
+        <div className="border-2 rounded-full border-black dark:border-white border-solid relative">
           <StaticImage className="rounded-full" src="../images/frenchie01.jpeg" alt="profile img" width={150} height={150}></StaticImage>
         </div>
         <div className="mt-5 font-bold text-2xl">Tao-Sen Chang</div>
-        <div className="mt-2 text-md text-stone-400">Web Developer</div>
+        <div className="mt-2 text-md text-zinc-700 dark:text-stone-400">Web Developer</div>
       </div>
       <div className="flex justify-center gap-4 text-xl">
         <RoundButton icon={faLinkedin} to="https://www.linkedin.com/in/tao-sen-chang/" />

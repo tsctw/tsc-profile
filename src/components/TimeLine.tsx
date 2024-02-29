@@ -17,10 +17,10 @@ type TimeLineProps = {
 
 export const TimeLine = ({ items }: TimeLineProps) => {
   return (
-    <ol className="relative border-s border-gray-200 dark:border-gray-700 m-10">
+    <ol className="relative border-s border-gray-300 dark:border-gray-700 m-10">
       {items.map((item, key) =>
         <li className="mb-10 ms-6" key={key}>
-          <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+          <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-gray-100 dark:ring-gray-900 dark:bg-blue-900">
             {item.icon ?
               <FontAwesomeIcon icon={item.icon} className="w-3.5 h-3.5 text-blue-800 dark:text-blue-300" /> :
               <svg className="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
