@@ -37,17 +37,16 @@ const renderList = () => {
     }
   ];
   return lists.map((list, key) => <div key={key} className="flex pt-3">
-    <div className={`text-2xl pe-2 ${highlightColor}`}><FontAwesomeIcon icon={list.icon} /></div>
+    <div className={`text-xl pe-2 ${highlightColor}`}><FontAwesomeIcon icon={list.icon} /></div>
     <div>{list.text}</div>
   </div>);
 };
 
 const About = () => {
   return (
-    <div className="flex flex-col p-5 text-white h-full">
+    <div className="flex flex-col p-5 dark:text-white h-full">
       <div className="flex justify-center mb-5">
         <div className="ani-image">
-          {/* <div>abc</div> */}
         </div>
       </div>
       <div className="flex justify-center text-left">

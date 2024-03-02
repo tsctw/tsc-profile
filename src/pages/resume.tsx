@@ -26,9 +26,9 @@ const itemsWork = [
     title: 'Front-end Software Engineer',
     time: 'Jul 2021 - Aug 2021',
     company: 'Delta Electronics • Taipei, Taiwan',
-    contents: 'Refactored old project into React/Next framework. \
-      Developed 80% of Data Replication Admin Console with Vue.js for \
-      CRM system database backup in Azure. Implemented proxy to avoid CORS issues.\
+    contents: 'Developed 80% of Data Replication Admin Console with Vue.js for \
+      CRM system database backup in Azure. Refactored 10% of the legacy project into React / Next framework. \
+      Implemented proxy to avoid CORS issues.\
       Styled components with Material UI and Vuetify. Collaborated with PM and \
       Back-end for architecture and scalability.',
     badges: ['JavaScript', 'React', 'Next.js', 'Vue.js', 'Git'],

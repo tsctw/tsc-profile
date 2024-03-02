@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faUser, faFolderOpen, faFileLines } from '@fortawesome/free-solid-svg-icons';
@@ -6,6 +6,7 @@ import { faSun, faMoon } from '@fortawesome/free-regular-svg-icons';
 import { Tooltip } from 'react-tooltip';
 import { useLocation } from '@reach/router';
 import { Pages } from './utils/routers';
+import { ModeTheme, ModeType, ThemeContext } from '../hooks/hooks';
 
 const lists = [
   {
@@ -42,33 +43,27 @@ export const ControlBar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const initMode = localStorage.getItem('color-theme') === 'dark' ||
-    (!('color-theme' in localStorage)
-      && window.matchMedia('(prefers-color-scheme: dark)').matches) ?
-    'light' : 'dark';
-
-
-  const [mode, setMode] = useState(initMode);
+  const { mode, setMode }: ModeType = useContext(ThemeContext);
 
   const toggleTheme = () => {
-    if (mode === 'light') {
-      document.documentElement.classList.add('dark');
-      setMode('dark');
+    if (mode === ModeTheme.LIGHT) {
+      document.documentElement.classList.add(ModeTheme.DARK);
+      setMode(ModeTheme.DARK);
     } else {
-      document.documentElement.classList.remove('dark');
-      setMode('light');
+      document.documentElement.classList.remove(ModeTheme.DARK);
+      setMode(ModeTheme.LIGHT);
     }
   };
 
   const showingThemeIcon = () => {
-    if (mode === 'light') {
+    if (mode === ModeTheme.LIGHT) {
       return faMoon;
     }
     return faSun;
   };
 
   const showingThemeTooltip = () => {
-    if (mode === 'light') {
+    if (mode === ModeTheme.LIGHT) {
       return 'Toggle dark mode';
     }
     return 'Toggle light mode';

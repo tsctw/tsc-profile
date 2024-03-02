@@ -63,14 +63,15 @@ const IndexPage: React.FC<PageProps> = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center">
       <div className="w-full -translate-y-16 m-b-0">
-        <div className="bg-slate-200 h-7 flex items-center gap-2 pl-2 rounded-t-lg">
+        <div className="bg-zinc-700 dark:bg-slate-200 h-7 flex items-center gap-2 pl-2 rounded-t-lg">
           <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#FF5F55' }}></div>
           <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#FFBE2D' }}></div>
           <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#24C93F' }}></div>
         </div>
         <div>
+          {/* TODO: can have a mock component when render is not finished */}
           {<CodeMirrorComponent code={code} setCode={setCode} setShowRunButton={setShowRunButton} />}
         </div>
       </div>
@@ -81,7 +82,7 @@ const IndexPage: React.FC<PageProps> = () => {
             setTimeout(() => handleRunCode(), 500);
           }}>Run Code</Button>
         <div className="h-5"></div>
-        <div className={`overflow-scroll text-cyan-100 opacity-0 transition duration-500 ease-in-out ${output && 'opacity-100'}`}
+        <div className={`overflow-scroll text-cyan-800 dark:text-cyan-100 opacity-0 transition duration-500 ease-in-out ${output && 'opacity-100'}`}
           style={{
             width: '600px',
             height: '100px',
@@ -89,7 +90,6 @@ const IndexPage: React.FC<PageProps> = () => {
           }}>{renderLine()}</div>
       </div>
     </div>);
-
 };
 
 export default IndexPage;

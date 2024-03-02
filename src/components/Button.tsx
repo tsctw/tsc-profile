@@ -19,9 +19,9 @@ const varient = {
     hoverBg: 'hover:bg-blue-500'
   },
   [Varient.OUTLINE]: {
-    text: 'text-gray-900',
-    bg: 'bg-white',
-    hoverBg: 'hover:bg-gray-300'
+    text: 'text-white dark:text-black',
+    bg: 'bg-zinc-600 dark:bg-slate-200',
+    hoverBg: 'hover:bg-zinc-500 hover:dark:bg-slate-400'
   }
 };
 
@@ -46,8 +46,7 @@ export const Button = (props: ComponentWithChildProps) => {
   return (
     <button {...props} className={`flex items-center 
       ${buttonSize.px} ${buttonSize.py} ${buttonSize.fontWeight} ${buttonSize.fontSize}
-      tracking-wide ${style.text} ${style.bg} ${style.hoverBg} capitalize transition-colors 
-      duration-300 transform rounded-lg focus:outline-none ${props.className}`}>
+      tracking-wide ${style.text} ${style.bg} ${style.hoverBg} capitalize transform rounded-lg focus:outline-none ${props.className}`}>
       {props.children}
     </button>
   );

@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useAutoUpdateState } from '../utils/useAutoUpdateState';
 import CodeMirror from '@uiw/react-codemirror';
-import 'codemirror/theme/monokai.css';
 import 'codemirror/theme/solarized.css';
+import 'codemirror/theme/hopscotch.css';
 import 'codemirror/keymap/sublime';
 import 'codemirror/addon/display/autorefresh';
 import 'codemirror/addon/comment/comment';
 import 'codemirror/addon/edit/matchbrackets';
 import 'codemirror/mode/javascript/javascript';
+import { ModeTheme, ThemeContext } from '../hooks/hooks';
 
 type CodeMirrorComponentProps = {
   code: string;
@@ -20,6 +21,8 @@ const CodeMirrorComponent = ({ code, setCode, setShowRunButton }: CodeMirrorComp
   const updateInterval = 20;
   const [initCode] = useAutoUpdateState('', fullText, updateInterval);
   const autoTypeDone = useRef(false);
+
+  const { mode } = useContext(ThemeContext);
 
   useEffect(() => {
     setCode(initCode);
@@ -40,7 +43,7 @@ const CodeMirrorComponent = ({ code, setCode, setShowRunButton }: CodeMirrorComp
         width="600px"
         options={{
           placeholder: 'Please enter the TypeScript code.',
-          theme: 'solarized',
+          theme: mode === ModeTheme.LIGHT ? 'hopscotch' : 'solarized',
           tabSize: 2,
           mode: 'tsx',
           keyMap: 'sublime',

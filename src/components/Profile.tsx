@@ -41,7 +41,8 @@ export const Profile = () => {
           <StaticImage className="rounded-full" src="../images/frenchie01.jpeg" alt="profile img" width={150} height={150}></StaticImage>
         </div>
         <div className="mt-5 font-bold text-2xl">Tao-Sen Chang</div>
-        <div className="mt-2 text-md text-zinc-700 dark:text-stone-400">Web Developer</div>
+        {/* TODO: can have an animatin rotate showing title Software Engineer/Web Developer */}
+        <div className="mt-2 text-md text-zinc-700 dark:text-stone-400">Software Engineer</div>
       </div>
       <div className="flex justify-center gap-4 text-xl">
         <RoundButton icon={faLinkedin} to="https://www.linkedin.com/in/tao-sen-chang/" />
