@@ -17,7 +17,7 @@ type CodeMirrorComponentProps = {
 }
 
 const CodeMirrorComponent = ({ code, setCode, setShowRunButton }: CodeMirrorComponentProps) => {
-  const fullText = 'const greeting = (name: string) => {\n  return `Hey ${name}, here is a Web Developer\'s profile`;\n}\n\nconsole.log(greeting(\'Guest\'));';
+  const fullText = 'const greeting = (name: string) => {\n  return `Hey ${name}, welcome! Here is a Software Engineer\'s profile.`;\n}\n\nconsole.log(greeting(\'Guest\'));';
   const updateInterval = 20;
   const [initCode] = useAutoUpdateState('', fullText, updateInterval);
   const autoTypeDone = useRef(false);
@@ -40,7 +40,7 @@ const CodeMirrorComponent = ({ code, setCode, setShowRunButton }: CodeMirrorComp
           if (autoTypeDone.current) setCode(val.getValue());
         }}
         height="200px"
-        width="600px"
+        width="620px"
         options={{
           placeholder: 'Please enter the TypeScript code.',
           theme: mode === ModeTheme.LIGHT ? 'hopscotch' : 'solarized',

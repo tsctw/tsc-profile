@@ -10,6 +10,9 @@ module.exports = {
         'code-light': '#322931',
         'nord-green': '#A3BE8C'
       }
+    },
+    screens: {
+      'normal': '1024px'
     }
   },
   plugins: [],

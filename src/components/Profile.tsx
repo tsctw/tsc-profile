@@ -40,7 +40,7 @@ export const Profile = () => {
         <div className="border-2 rounded-full border-black dark:border-white border-solid relative">
           <StaticImage className="rounded-full" src="../images/frenchie01.jpeg" alt="profile img" width={150} height={150}></StaticImage>
         </div>
-        <div className="mt-5 font-bold text-2xl">Tao-Sen Chang</div>
+        <div className="mt-5 font-bold text-xl">Tao-Sen Chang</div>
         {/* TODO: can have an animatin rotate showing title Software Engineer/Web Developer */}
         <div className="mt-2 text-md text-zinc-700 dark:text-stone-400">Software Engineer</div>
       </div>
