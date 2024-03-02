@@ -40,7 +40,18 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    'gatsby-plugin-typescript'
+    {
+      resolve: 'gatsby-plugin-preload',
+      options: {
+        preloaders: [
+          {
+            href: 'profile_my_pic.jpeg',
+            as: 'image'
+          },
+        ]
+      }
+    },
+    'gatsby-plugin-typescript',
   ],
 };
 

@@ -72,13 +72,13 @@ export const ControlBar = () => {
 
   return (
     <div className="flex gap-4 flex-col justify-around items-center h-100 w-16 bg-zinc-700 text-white rounded-t-full rounded-b-full p-5">
-      {lists.map((list) =>
-        <>
+      {lists.map((list, key) =>
+        <div key={key}>
           <Link to={list.path} className={`${list.name} ${currentPath === list.path ? 'text-orange-500' : ''}`}>
             <FontAwesomeIcon icon={list.icon} />
           </Link>
           <Tooltip anchorSelect={list.anchorSelect} place='left' style={{ fontSize: '14px' }}>{list.displayName}</Tooltip>
-        </>
+        </div>
       )}
       <button className="theme" onClick={toggleTheme}>
         <FontAwesomeIcon icon={showingThemeIcon()} />
