@@ -47,7 +47,7 @@ export const DrawerToggle = () => {
       </button>
     </div>
 
-    <div ref={drawerRef} className={`${drawerClassName()} ${isDrawerClose ? 'hidden' : 'absolute'} z-20 w-80 h-full overflow-y-auto transition opacity-90`}>
+    <div ref={drawerRef} className={`${drawerClassName()} ${isDrawerClose ? 'hidden' : 'absolute'} z-20 w-80 h-full overflow-y-auto transition opacity-95`}>
       <Profile />
     </div>
   </>);
