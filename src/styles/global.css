@@ -27,7 +27,7 @@
   width: 250px;
   height: 250px;
   overflow: hidden;
-  background-image: url('../images/profile03.png');
+  background-image: url('/profile_my_pic.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -71,4 +71,34 @@
 .CodeMirror {
   border-radius: 0 0 5px 5px !important;
   box-shadow: none !important;
+}
+
+@keyframes slideIn {
+  0% {
+    right: -80rem;
+  }
+
+  100% {
+    right: 0;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    right: 0;
+  }
+
+  100% {
+    right: -80rem;
+  }
+}
+
+.drawer-slide-open {
+  -webkit-animation: slideIn 0.5s forwards;
+  animation: slideIn 0.5s forwards;
+}
+
+.drawer-slide-close {
+  -webkit-animation: slideOut 0.5s forwards;
+  animation: slideOut 0.5s forwards;
 }
