@@ -75,8 +75,8 @@ const Resume = () => {
   return (
     <div className="h-full">
       <div className="text-2xl text-black dark:text-white font-bold pt-10 pl-10">Resume</div>
-      <div className="flex">
-        <div className="w-1/2">
+      <div className="flex flex-col small:flex-row">
+        <div className="small:w-1/2">
           <div>
             <div className="text-xl text-black dark:text-white pt-10 pl-10">Work
               <span className={`ml-2 ${highlightColor}`}>Experience</span>
@@ -84,7 +84,7 @@ const Resume = () => {
             <TimeLine items={itemsWork} />
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="small:w-1/2">
           <div>
             <div className="text-xl text-black dark:text-white pt-10 pl-10">
               Education

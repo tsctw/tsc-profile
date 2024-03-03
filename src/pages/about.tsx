@@ -49,9 +49,9 @@ const About = () => {
         <div className="ani-image">
         </div>
       </div>
-      <div className="flex justify-center text-left">
+      <div className="flex flex-col small:flex-row justify-center text-left">
         {/* section left */}
-        <div className="w-1/2 m-5">
+        <div className="small:w-1/2 m-5">
           <h3 className={aboutTitle}>About
             <span className={`${aboutTitle} ${highlightColor} pl-3`}>Me</span>
           </h3>
@@ -61,7 +61,7 @@ const About = () => {
           </div>
         </div>
         {/* section right */}
-        <div className="w-1/2 m-5">
+        <div className="small:w-1/2 m-5">
           <h3 className={aboutTitle}>What
             <span className={`${aboutTitle} ${highlightColor} pl-3`}>I Do</span>
           </h3>

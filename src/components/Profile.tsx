@@ -35,7 +35,7 @@ export const Profile = () => {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full text-black dark:text-white bg-zinc-300 dark:bg-zinc-700">
       <div className="flex flex-col justify-center items-center m-3 mt-5 profile-image">
         <div className="border-2 rounded-full border-black dark:border-white border-solid relative">
           <StaticImage className="rounded-full" src="../images/frenchie01.jpeg" alt="profile img" width={150} height={150}></StaticImage>

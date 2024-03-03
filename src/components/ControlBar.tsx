@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faUser, faFolderOpen, faFileLines } from '@fortawesome/free-solid-svg-icons';
@@ -69,21 +69,34 @@ export const ControlBar = () => {
     return 'Toggle light mode';
   };
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <div className="flex gap-4 flex-col justify-around items-center h-100 w-16 bg-zinc-700 text-white rounded-t-full rounded-b-full p-5">
+    <div className="flex gap-4 normal:flex-col justify-around items-center normal-h-100 normal:w-16 bg-zinc-700 text-white rounded-s-full normal:rounded-t-full rounded-e-full normal:rounded-b-full p-4 normal:p-5">
       {lists.map((list, key) =>
         <div key={key}>
           <Link to={list.path} className={`${list.name} ${currentPath === list.path ? 'text-orange-500' : ''}`}>
             <FontAwesomeIcon icon={list.icon} />
           </Link>
-          <Tooltip anchorSelect={list.anchorSelect} place='left' style={{ fontSize: '14px' }}>{list.displayName}</Tooltip>
+          <Tooltip anchorSelect={list.anchorSelect} place={width < 1024 ? 'top' : 'left'} style={{ fontSize: '14px' }}>{list.displayName}</Tooltip>
         </div>
       )}
       <button className="theme" onClick={toggleTheme}>
         <FontAwesomeIcon icon={showingThemeIcon()} />
       </button>
-      <Tooltip anchorSelect=".theme" place='left' style={{ fontSize: '14px' }}>{showingThemeTooltip()}</Tooltip>
+      <Tooltip anchorSelect=".theme" place={width < 1024 ? 'top' : 'left'} style={{ fontSize: '14px' }}>{showingThemeTooltip()}</Tooltip>
     </div>
   );
 };

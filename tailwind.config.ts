@@ -2,19 +2,22 @@
 module.exports = {
   content: [
     './src/pages/**/*.{js,jsx,ts,tsx}',
-    './src/components/**/*.{js,jsx,ts,tsx}',
+    './src/components/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
     extend: {
       colors: {
-        'code-light': '#322931',
-        'nord-green': '#A3BE8C'
+        'code-light': '#322931'
+      },
+      inset: {
+        'minus-80': '-20rem'
       }
     },
     screens: {
-      'normal': '1024px'
+      'normal': '1024px',
+      'small': '600px'
     }
   },
   plugins: [],
-  darkMode: 'class',
+  darkMode: 'class'
 };
