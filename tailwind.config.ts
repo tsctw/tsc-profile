@@ -11,6 +11,9 @@ module.exports = {
       },
       inset: {
         'minus-80': '-20rem'
+      },
+      height: {
+        'calc-5rem': 'calc(100% - 5rem)'
       }
     },
     screens: {

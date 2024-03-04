@@ -10,7 +10,7 @@ const itemsWork = [
   {
     title: 'Software Engineer',
     time: 'Apr 2022 - Present',
-    company: 'Bayer • Warsaw, Poland',
+    company: 'Bayer • Full-time • Warsaw, Poland',
     contents: 'Contributed to large-scale web app dev,\
       both front-end & back-end using React & Node.js,\
       facilitating seamless collaboration among 5 teams.\
@@ -25,7 +25,7 @@ const itemsWork = [
   {
     title: 'Front-end Software Engineer',
     time: 'Jul 2021 - Aug 2021',
-    company: 'Delta Electronics • Taipei, Taiwan',
+    company: 'Delta Electronics • Internship • Taipei, Taiwan',
     contents: 'Developed 80% of Data Replication Admin Console with Vue.js for \
       CRM system database backup in Azure. Refactored 10% of the legacy project into React / Next framework. \
       Implemented proxy to avoid CORS issues.\
@@ -37,7 +37,7 @@ const itemsWork = [
   {
     title: 'Front-end Software Engineer',
     time: 'May 2020 - Sep 2020',
-    company: 'Ivy-Way Academy • Taipei, Taiwan',
+    company: 'Ivy-Way Academy • Internship • Taipei, Taiwan',
     contents: 'Designed web pages using Vue.js, HTML, and CSS. \
       Refactored 30% of code for better reusability. \
       Tested over 40 APIs with Back-end developers. \

@@ -90,13 +90,13 @@ export const ControlBar = () => {
           <Link to={list.path} className={`${list.name} ${currentPath === list.path ? 'text-orange-500' : ''}`}>
             <FontAwesomeIcon icon={list.icon} />
           </Link>
-          <Tooltip anchorSelect={list.anchorSelect} place={width < 1024 ? 'top' : 'left'} style={{ fontSize: '14px' }}>{list.displayName}</Tooltip>
+          <Tooltip className={`${width < 1024 && 'hidden'}`} anchorSelect={list.anchorSelect} place={width < 1024 ? 'top' : 'left'} style={{ fontSize: '14px' }}>{list.displayName}</Tooltip>
         </div>
       )}
       <button className="theme" onClick={toggleTheme}>
         <FontAwesomeIcon icon={showingThemeIcon()} />
       </button>
-      <Tooltip anchorSelect=".theme" place={width < 1024 ? 'top' : 'left'} style={{ fontSize: '14px' }}>{showingThemeTooltip()}</Tooltip>
+      <Tooltip className={`${width < 1024 && 'hidden'}`} anchorSelect=".theme" place={width < 1024 ? 'top' : 'left'} style={{ fontSize: '14px' }}>{showingThemeTooltip()}</Tooltip>
     </div>
   );
 };

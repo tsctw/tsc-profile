@@ -21,6 +21,7 @@ const CodeMirrorComponent = ({ code, setCode, setShowRunButton }: CodeMirrorComp
   const updateInterval = 20;
   const [initCode] = useAutoUpdateState('', fullText, updateInterval);
   const autoTypeDone = useRef(false);
+  const [isReady, setIsReady] = useState(false);
 
   const { mode } = useContext(ThemeContext);
 
@@ -35,6 +36,7 @@ const CodeMirrorComponent = ({ code, setCode, setShowRunButton }: CodeMirrorComp
   const [codeMirrorWidth, setCodeMirrorWidth] = useState(checkInnerwidth());
 
   useEffect(() => {
+    setTimeout(() => { setIsReady(true); }, 100);
     const handleResize = () => {
       setCodeMirrorWidth(checkInnerwidth());
     };
@@ -51,33 +53,37 @@ const CodeMirrorComponent = ({ code, setCode, setShowRunButton }: CodeMirrorComp
     }
   }, [initCode]);
 
-  return (
-    <React.Suspense fallback={<></>}>
-      <div className="w-full m-b-0 flex flex-col h-full justify-center items-center">
-        <div className="bg-zinc-700 dark:bg-slate-200 h-7 flex items-center gap-2 pl-2 rounded-t-lg"
-          style={{ width: `${codeMirrorWidth}px` }}>
-          <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#FF5F55' }}></div>
-          <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#FFBE2D' }}></div>
-          <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#24C93F' }}></div>
-        </div>
-        <div>
-          <CodeMirror
-            value={code}
-            onChange={(val) => {
-              if (autoTypeDone.current) setCode(val.getValue());
-            }}
-            height="200px"
-            width={`${codeMirrorWidth}px`}
-            options={{
-              placeholder: 'Please enter the TypeScript code.',
-              theme: mode === ModeTheme.LIGHT ? 'hopscotch' : 'solarized',
-              tabSize: 2,
-              mode: 'tsx',
-              keyMap: 'sublime',
-              lineNumbers: false,
-            }} />
-        </div>
+  const renderElement = () => {
+    return <div className={`w-full m-b-0 flex flex-col h-full justify-center items-center transition duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}>
+      <div className="bg-zinc-700 dark:bg-slate-200 h-7 flex items-center gap-2 pl-2 rounded-t-lg"
+        style={{ width: `${codeMirrorWidth}px` }}>
+        <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#FF5F55' }}></div>
+        <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#FFBE2D' }}></div>
+        <div className="rounded-full w-3 h-3" style={{ backgroundColor: '#24C93F' }}></div>
       </div>
+      <div>
+        <CodeMirror
+          value={code}
+          onChange={(val) => {
+            if (autoTypeDone.current) setCode(val.getValue());
+          }}
+          height="200px"
+          width={`${codeMirrorWidth}px`}
+          options={{
+            placeholder: 'Please enter the TypeScript code.',
+            theme: mode === ModeTheme.LIGHT ? 'hopscotch' : 'solarized',
+            tabSize: 2,
+            mode: 'tsx',
+            keyMap: 'sublime',
+            lineNumbers: false,
+          }} />
+      </div>
+    </div>;
+  };
+
+  return (
+    <React.Suspense fallback={<>{renderElement()}</>}>
+      {renderElement()}
     </React.Suspense>
   );
 };

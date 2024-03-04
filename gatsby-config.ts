@@ -11,7 +11,6 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     'gatsby-plugin-postcss',
-    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -40,18 +39,14 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    {
-      resolve: 'gatsby-plugin-preload',
-      options: {
-        preloaders: [
-          {
-            href: 'profile_my_pic.jpeg',
-            as: 'image'
-          },
-        ]
-      }
-    },
     'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pdf',
+        path: `${__dirname}/static/`,
+      },
+    },
   ],
 };
 
