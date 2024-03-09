@@ -20,8 +20,8 @@ export type Edge = {
 
 const Portfolio = () => {
   const data = useStaticQuery(graphql`
-  query {
-    allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+    query {
+      allFile(filter: { sourceInstanceName: { eq: "images" } }) {
         edges {
           node {
             name
@@ -33,8 +33,9 @@ const Portfolio = () => {
           }
         }
       }
-  } 
+    } 
   `);
+
   const portfolioData = [
     {
       image: data.allFile.edges.find((edge: Edge) => edge.node.name === 'profile'),
@@ -74,14 +75,14 @@ const Portfolio = () => {
     {
       image: data.allFile.edges.find((edge: Edge) => edge.node.name === 'stock'),
       title: 'Stock Simulator',
-      badges: ['Angular 8', 'TypeScript', 'Java', 'Hibernate', 'Spring', 'mySQL', 'CSS', 'Bootstrap', 'IEX Cloud API'],
+      badges: ['Angular8', 'TypeScript', 'Java', 'mySQL', 'Bootstrap', 'IEX Cloud API'],
       sourceUrl: 'https://github.com/DawsonChang/stock_frontend',
       sourceUrl2: 'https://github.com/DawsonChang/stock_backend',
     },
     {
       image: data.allFile.edges.find((edge: Edge) => edge.node.name === 'cnf-dnf'),
       title: 'CNF/DNF Converter',
-      badges: ['Python', 'Flask', 'JavaScript', 'jQuery', 'HTML', 'CSS', 'Bootstrap'],
+      badges: ['Python', 'Flask', 'JavaScript', 'jQuery', 'Bootstrap'],
       sourceUrl: 'https://github.com/DawsonChang/CNF-DNF-converter-Python',
     },
     {
@@ -106,7 +107,7 @@ const Portfolio = () => {
   return (
     <>
       <div className="text-2xl text-black dark:text-white font-bold pt-10 pl-10">Portfolio</div>
-      <div className="grid grid-cols-1 small:grid-cols-2 normal:grid-cols-3 gap-4 m-5">
+      <div className="grid grid-cols-1 small:grid-cols-2 normal:grid-cols-3 gap-8 m-5 content-between">
         {portfolioData.map((data, key) =>
           <PortfolioCard key={key} {...data} />
         )}
