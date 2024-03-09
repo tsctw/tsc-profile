@@ -44,7 +44,7 @@ const renderList = () => {
 
 const About = () => {
   return (
-    <div className="flex flex-col p-5 dark:text-white h-full">
+    <div className="flex flex-col dark:text-white h-full mt-4">
       <div className="flex justify-center mb-5">
         <div className="ani-image">
         </div>
@@ -69,7 +69,6 @@ const About = () => {
             {renderList()}
           </div>
         </div>
-
       </div>
     </div >
   );

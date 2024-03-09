@@ -12,7 +12,7 @@ const config: GatsbyConfig = {
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
+    'gatsby-image',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -40,18 +40,23 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    {
-      resolve: 'gatsby-plugin-preload',
-      options: {
-        preloaders: [
-          {
-            href: 'profile_my_pic.jpeg',
-            as: 'image'
-          },
-        ]
-      }
-    },
     'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pdf',
+        path: `${__dirname}/static/`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/images`,
+      },
+    },
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp'
   ],
 };
 
