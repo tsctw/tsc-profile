@@ -11,7 +11,8 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     'gatsby-plugin-postcss',
-    'gatsby-plugin-sharp',
+    'gatsby-plugin-image',
+    'gatsby-image',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -47,6 +48,15 @@ const config: GatsbyConfig = {
         path: `${__dirname}/static/`,
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/images`,
+      },
+    },
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp'
   ],
 };
 

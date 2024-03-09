@@ -14,9 +14,9 @@ type ComponentWithChildProps = React.PropsWithChildren<{
 
 const varient = {
   [Varient.PRIMARY]: {
-    text: 'text-white',
-    bg: 'bg-blue-600',
-    hoverBg: 'hover:bg-blue-500'
+    text: 'text-white dark:text-slate-100',
+    bg: 'bg-blue-600 dark:bg-blue-800',
+    hoverBg: 'hover:bg-blue-500 dark:hover:bg-blue-700'
   },
   [Varient.OUTLINE]: {
     text: 'text-white dark:text-black',

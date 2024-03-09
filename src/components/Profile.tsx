@@ -5,8 +5,6 @@ import { Tooltip } from 'react-tooltip';
 import { RoundButton } from './RoundButton';
 import { Button, Varient } from './Button';
 import { useStaticQuery, graphql } from 'gatsby';
-// eslint-disable-next-line
-// import PDF from '../static/Resume_SoftwareEngineer_TaoSenChang.pdf';
 
 const copyFunc = () => {
   const textToCopy = 'taosen.chang@gmail.com';
