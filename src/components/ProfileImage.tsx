@@ -26,9 +26,7 @@ export const ProfileImage = () => {
 
   return (
     <div className="border-2 rounded-full border-black dark:border-white border-solid relative">
-      <div>
-        <Img className="profile-image" fluid={image.node?.childImageSharp?.fluid} alt={image.node.name} />
-      </div>
+      <Img className="profile-image" fluid={image.node?.childImageSharp?.fluid} alt={image.node.name} />
     </div>
   );
 };

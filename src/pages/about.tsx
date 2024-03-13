@@ -4,6 +4,9 @@ import { Seo } from '../components/seo';
 import { faReact } from '@fortawesome/free-brands-svg-icons';
 import { faCode, faServer, faBugSlash, faPalette, faArrowsSpin } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Edge } from '../pages/portfolio';
+import Img from 'gatsby-image';
+import { useStaticQuery, graphql } from 'gatsby';
 
 const aboutTitle = 'text-3xl font-bold';
 
@@ -43,10 +46,30 @@ const renderList = () => {
 };
 
 const About = () => {
+  const images = useStaticQuery(graphql`
+    query {
+      allFile(filter: { sourceInstanceName: { eq: "images" } }) {
+        edges {
+          node {
+            name
+            childImageSharp {
+              fluid(maxWidth: 250, maxHeight: 250) {
+                  ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    } 
+  `);
+
+  const image = images.allFile.edges.find((edge: Edge) => edge.node.name === 'profile_my_pic');
+
   return (
     <div className="flex flex-col dark:text-white h-full mt-4">
       <div className="flex justify-center mb-5">
-        <div className="ani-image">
+        <div className="ani-image shadow-yellow-700">
+          <Img className="border-solid" fluid={image.node?.childImageSharp?.fluid} alt={image.node.name} />
         </div>
       </div>
       <div className="flex flex-col small:flex-row justify-center text-left">

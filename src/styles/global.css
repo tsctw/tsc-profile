@@ -9,17 +9,17 @@
 @keyframes morph {
   0% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    box-shadow: inset 0px 0px 0px 9px rgba(0, 0, 0, .1);
+    box-shadow: -2px 0px 2px 2px rgba(188, 54, 54, 0.5);
   }
 
   50% {
     border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-    box-shadow: inset 0px 0px 0px 9px rgba(0, 0, 0, .1);
+    box-shadow: 2px 2px 0px 2px rgba(188, 54, 54, 0.5);
   }
 
   100% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    box-shadow: inset 0px 0px 0px 9px rgba(0, 0, 0, .1);
+    box-shadow: -2px 0px 2px 2px rgba(188, 54, 54, 0.5);
   }
 }
 
@@ -27,12 +27,11 @@
   width: 250px;
   height: 250px;
   overflow: hidden;
-  background-image: url('../images/profile_my_pic.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   animation: morph 8s ease-in-out infinite;
-  box-shadow: inset 0px 0px 0px 9px rgba(0, 0, 0, .1);
+  box-shadow: inset 0px 0px 0px 4px rgba(188, 54, 54, 0.5);
 }
 
 .profile-margin {
