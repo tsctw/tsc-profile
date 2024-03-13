@@ -5,6 +5,7 @@ import { Tooltip } from 'react-tooltip';
 import { RoundButton } from './RoundButton';
 import { Button, Varient } from './Button';
 import { useStaticQuery, graphql } from 'gatsby';
+import { ProfileImage } from './ProfileImage';
 
 const copyFunc = () => {
   const textToCopy = 'taosen.chang@gmail.com';
@@ -50,9 +51,7 @@ export const Profile = () => {
   return (
     <div className="flex flex-col h-full text-black dark:text-white bg-zinc-300 dark:bg-zinc-700">
       <div className="flex flex-col justify-center items-center m-3 mt-5 profile-margin">
-        <div className="border-2 rounded-full border-black dark:border-white border-solid relative">
-          <div className="profile-image"></div>
-        </div>
+        <ProfileImage />
         <div className="mt-5 font-bold text-xl">Tao-Sen Chang</div>
         {/* TODO: can have an animatin rotate showing title Software Engineer/Web Developer */}
         <div className="mt-2 text-md text-zinc-700 dark:text-stone-400">Software Engineer</div>
