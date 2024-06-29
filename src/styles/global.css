@@ -9,17 +9,17 @@
 @keyframes morph {
   0% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    box-shadow: -2px 0px 2px 2px rgba(188, 54, 54, 0.5);
+    box-shadow: -1px 0px 1px 1px rgba(249, 115, 22, 1);
   }
 
   50% {
     border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-    box-shadow: 2px 2px 0px 2px rgba(188, 54, 54, 0.5);
+    box-shadow: 1px 1px 0px 1px rgba(249, 115, 22, 1);
   }
 
   100% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    box-shadow: -2px 0px 2px 2px rgba(188, 54, 54, 0.5);
+    box-shadow: -1px 0px 1px 1px rgba(249, 115, 22, 1);
   }
 }
 
@@ -31,7 +31,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   animation: morph 8s ease-in-out infinite;
-  box-shadow: inset 0px 0px 0px 4px rgba(188, 54, 54, 0.5);
+  box-shadow: inset 0px 0px 0px 4px rgba(249, 115, 22, 1);
 }
 
 .profile-margin {

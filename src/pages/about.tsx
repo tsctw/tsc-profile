@@ -53,7 +53,7 @@ const About = () => {
           node {
             name
             childImageSharp {
-              fluid(maxWidth: 250, maxHeight: 250) {
+              fluid(maxWidth: 200, maxHeight: 200) {
                   ...GatsbyImageSharpFluid
               }
             }
