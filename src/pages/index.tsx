@@ -5,6 +5,7 @@ import * as ts from 'typescript';
 import { Button, Varient } from '../components/Button';
 import Loadable from '@loadable/component';
 import PuffLoader from 'react-spinners/PuffLoader';
+import { Interpreter } from 'eval5';
 
 class TSError extends Error {
   constructor(message: string) {
@@ -28,27 +29,26 @@ const IndexPage: React.FC<PageProps> = () => {
 
   // Prevent CodeMirrorComponent render twice when props changes
   const CodeMirrorComponent = useMemo(() => Loadable(() => import('../components/CodeMirrorComponent')), []);
+  const interpreter = new Interpreter(window);
 
   const handleRunCode = () => {
     try {
       // 將 TypeScript 代碼轉換為 JavaScript 代碼
       const transpiledCode = ts.transpileModule(code, { compilerOptions: options }).outputText;
       const modifiedCode = `
-      let output = ''; // 初始化 output 變量
-      const originalConsoleLog = console.log; // 保存原始 console.log 函數
-
-      // 重寫 console.log 函數以捕獲輸出並賦值給 output 變量
-      console.log = (message) => {
-        const newMsg = message.replace(/\\n|\\r/g, '');
-        output += '> ' + newMsg + '\\n'; // 將輸出添加到 output 變量
-        originalConsoleLog(newMsg); // 調用原始 console.log 函數
+      var output = '';
+      var originalConsoleLog = console.log;
+      console.log = function(message){
+        output += '> ' + message + '\\n';
       };
-
-      ${transpiledCode} // 執行原始 TypeScript 代碼
-      return output;
+      ${transpiledCode}
+      console.log = originalConsoleLog;
+      output
     `;
-      const runnableCode = new Function(modifiedCode);
-      const result = runnableCode();
+
+      const result = interpreter.evaluate(modifiedCode);
+
+      console.log(result);
       setOutput(result);
     } catch (error) {
       if (error instanceof TSError) setOutput('> Error: ' + error.message);
