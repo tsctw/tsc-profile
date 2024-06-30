@@ -1,25 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import { Seo } from '../components/seo';
-import * as ts from 'typescript';
 import { Button, Varient } from '../components/Button';
+import { HandleRunCode } from '../components/HandleRunCode';
 import Loadable from '@loadable/component';
 import PuffLoader from 'react-spinners/PuffLoader';
-import { Interpreter } from 'eval5';
-
-class TSError extends Error {
-  constructor(message: string) {
-    super(message); // call the parent constructor
-    this.name = 'TSError'; // set the name property
-  }
-}
-
-const options: ts.CompilerOptions = {
-  allowJs: false, // 不允许处理 JavaScript 文件
-  noImplicitAny: true, // 禁止隐式的 any 类型
-  checkJs: true, // 检查 JavaScript 文件
-  module: ts.ModuleKind.CommonJS,
-};
 
 const IndexPage: React.FC<PageProps> = () => {
   const [code, setCode] = useState('');
@@ -29,31 +14,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
   // Prevent CodeMirrorComponent render twice when props changes
   const CodeMirrorComponent = useMemo(() => Loadable(() => import('../components/CodeMirrorComponent')), []);
-  const interpreter = new Interpreter(window);
-
-  const handleRunCode = () => {
-    try {
-      // 將 TypeScript 代碼轉換為 JavaScript 代碼
-      const transpiledCode = ts.transpileModule(code, { compilerOptions: options }).outputText;
-      const modifiedCode = `
-      var output = '';
-      var originalConsoleLog = console.log;
-      console.log = function(message){
-        output += '> ' + message + '\\n';
-      };
-      ${transpiledCode}
-      console.log = originalConsoleLog;
-      output
-    `;
-
-      const result = interpreter.evaluate(modifiedCode);
-
-      console.log(result);
-      setOutput(result);
-    } catch (error) {
-      if (error instanceof TSError) setOutput('> Error: ' + error.message);
-    }
-  };
+  const { handleRunCode } = HandleRunCode({ code, setOutput });
 
   const renderLine = () => {
     if (!output) return;
