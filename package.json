@@ -25,6 +25,7 @@
     "@mdx-js/react": "^2.3.0",
     "@uiw/react-codemirror": "^3.2.10",
     "autoprefixer": "^10.4.16",
+    "eval5": "^1.4.7",
     "gatsby": "^5.13.3",
     "gatsby-image": "^3.11.0",
     "gatsby-omni-font-loader": "^2.0.2",
