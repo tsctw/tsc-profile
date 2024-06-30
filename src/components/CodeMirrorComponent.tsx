@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useAutoUpdateState } from '../utils/useAutoUpdateState';
 import CodeMirror from '@uiw/react-codemirror';
 import 'codemirror/theme/solarized.css';
@@ -20,7 +20,7 @@ const CodeMirrorComponent = ({ code, setCode, setShowRunButton }: CodeMirrorComp
   const fullText = 'const greeting = (name: string) => {\n  return `Hey ${name}, welcome! Here is a Software Engineer\'s profile.`;\n}\n\nconsole.log(greeting(\'Guest\'));';
   const updateInterval = 20;
   const [initCode] = useAutoUpdateState('', fullText, updateInterval);
-  const autoTypeDone = useRef(false);
+  const [autoTypeDone, setAutoTypeDone] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
   const { mode } = useContext(ThemeContext);
@@ -49,7 +49,7 @@ const CodeMirrorComponent = ({ code, setCode, setShowRunButton }: CodeMirrorComp
     setCode(initCode);
     if (initCode === fullText) {
       setShowRunButton(true);
-      autoTypeDone.current = true;
+      setAutoTypeDone(true);
     }
   }, [initCode]);
 
@@ -65,7 +65,7 @@ const CodeMirrorComponent = ({ code, setCode, setShowRunButton }: CodeMirrorComp
         <CodeMirror
           value={code}
           onChange={(val) => {
-            if (autoTypeDone.current) setCode(val.getValue());
+            if (autoTypeDone) setCode(val.getValue());
           }}
           height="200px"
           width={`${codeMirrorWidth}px`}
